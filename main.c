@@ -6,20 +6,20 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 12:53:22 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/08/01 13:37:34 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/11/12 18:54:38 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	check_path(char *str)
+int	check_path(const char *str)
 {
 	int		i;
 	int		j;
 	char	*ber;
 
 	j = 0;
-	ber = ft_strdup(".ber");
+	ber = ft_strdup(".cub");
 	i = ft_strlen(str) - 4;
 	while (str[i])
 	{
@@ -40,6 +40,17 @@ int	check_path(char *str)
 	return (0);
 }
 
+void init_t_map(t_map *ptr)
+{
+	ptr->no = NULL;
+	ptr->so = NULL;
+	ptr->we = NULL;
+	ptr->ea = NULL;
+	ptr->map = NULL;
+	ptr->maps = NULL;
+	ptr->dst = NULL;
+}
+
 int	main(int ac, char **av)
 {
 	int		fd;
@@ -51,12 +62,12 @@ int	main(int ac, char **av)
 	fd = open(av[1], O_RDWR);
 	if (ac != 2 || fd == -1 || !check_path(av[1]))
 	{
-		printf(" %sinvalid path\n%s ", RED, DEFFAULT);
+		printf("Error\n%sinvalid path\n%s ", RED, DEFFAULT);
 		return (0);
 	}
     else
 	{
-        printf("%s valid \n%s" , GREEN, DEFFAULT);
+        printf("%svalid\n%s" , GREEN, DEFFAULT);
 		read_file(ptr, fd);
 		check_element(ptr);
 		printf("\n\n\n\n\n%s\n", ptr->no);
