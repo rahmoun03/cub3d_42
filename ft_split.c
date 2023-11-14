@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:31:14 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/08/01 10:31:35 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/11/13 17:05:16 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,9 @@ char	**ft_split(char const *s, char c)
 {
 	char	**tab;
 	int		total_words;
-	int		i;
 
 	if (s == NULL)
 		return (NULL);
-	i = 0;
 	total_words = ft_count_words((char *)s, c);
 	tab = (char **)malloc(sizeof(char *) * (total_words + 1));
 	if (!tab)

@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:31:39 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/11/12 18:55:35 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/11/13 23:57:34 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,25 @@ void	check_and_set(t_map *map, char *str, int i)
 	else if (str[i] == 'E' && str[i + 1] == 'A')
 		map->ea = set_path(map, str, i+2);
 	else
+	{
+		printf("Error\n");	
+	 	exit(0);
+	} 
+}
+
+void	check_f_c(t_map *map, char *str, int i)
+{
+	if (str[i] == 'F' && (str[i + 1] == ' ' || str[i + 1] == '\t'))
+	{
+		map->f = set_path(map, str, i+1);
+	}
+	else if (str[i] == 'C' && (str[i + 1] == ' ' || str[i + 1] == '\t'))
+		map->c = set_path(map, str, i+1);
+	else
+	{
+		printf("Error\n");
 		exit(0);
+	}
 }
 
 void	check_element(t_map *map)
@@ -71,7 +89,7 @@ void	check_element(t_map *map)
 	int j;
 
 	i = 0;
-	while (map->maps[i] && i < 4)
+	while (map->maps[i] && i < 6)
 	{
 		j = 0;
 		while (map->maps[i][j] && map->maps[i][j] == ' ')
@@ -83,7 +101,8 @@ void	check_element(t_map *map)
 		}
 		else if (map->maps[i][j] == 'F' || map->maps[i][j] == 'C')
 		{
-
+			printf("aaaaaaaaaaaaaaaaaaaa\n");	
+			check_f_c(map, map->maps[i], j);
 		}
 		else
 		{
